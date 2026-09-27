@@ -4,8 +4,8 @@ services:
     runtime: python
     plan: free
     branch: master
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
-    startCommand: python manage.py migrate && python scripts/setup_demo.py && gunicorn vehicle_management.wsgi:application --bind 0.0.0.0:$PORT
+    buildCommand: pip install -r requirements.txt && PYTHONPATH=. python manage.py collectstatic --noinput
+    startCommand: PYTHONPATH=. python manage.py migrate && PYTHONPATH=. python scripts/setup_demo.py && PYTHONPATH=. python -m gunicorn vehicle_management.wsgi:application --bind 0.0.0.0:$PORT
     healthCheckPath: /
     autoDeploy: true
     envVars:
@@ -19,6 +19,8 @@ services:
         value: "False"
       - key: PYTHON_VERSION
         value: "3.12.6"
+      - key: PYTHONPATH
+        value: "."
 
 databases:
   - name: vehicle-management-db
