@@ -9,6 +9,7 @@ import django
 django.setup()
 
 from django.contrib.auth.models import Group, User
+from django.core.management import call_command
 
 from vehicles.models import Driver, Vehicle
 
@@ -58,6 +59,14 @@ def create_vehicle(vehicle_number, make, model, year, vehicle_type, owner_name, 
 create_user('admin', 'student', 'Admin', is_superuser=True)
 create_user('staff', 'staff123', 'Staff')
 create_user('viewer', 'viewer123', 'Viewer')
+
+fixture_path = os.path.join('vehicles', 'fixtures', 'vehicle_data.json')
+if os.path.exists(fixture_path):
+    Vehicle.objects.all().delete()
+    Driver.objects.all().delete()
+    call_command('loaddata', fixture_path, verbosity=1)
+    print('Vehicle and driver data loaded from fixture.')
+    raise SystemExit(0)
 
 drivers = [
     create_driver('Ravi Kumar', 'DL-2024-1001', '9876543210', 7, False),

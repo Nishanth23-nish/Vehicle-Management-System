@@ -1,0 +1,500 @@
+[
+{
+  "model": "vehicles.driver",
+  "pk": 1,
+  "fields": {
+    "name": "Ravi Kumar",
+    "license_number": "DL-KA-2020-1001",
+    "phone": "9876501001",
+    "experience_years": 8,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 2,
+  "fields": {
+    "name": "Arun Prasad",
+    "license_number": "DL-TN-2018-2202",
+    "phone": "9876501002",
+    "experience_years": 6,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 3,
+  "fields": {
+    "name": "Meena Joseph",
+    "license_number": "DL-KL-2019-3303",
+    "phone": "9876501003",
+    "experience_years": 7,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 4,
+  "fields": {
+    "name": "Suresh Reddy",
+    "license_number": "DL-AP-2017-4404",
+    "phone": "9876501004",
+    "experience_years": 10,
+    "is_available": false
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 5,
+  "fields": {
+    "name": "Imran Khan",
+    "license_number": "DL-MH-2021-5505",
+    "phone": "9876501005",
+    "experience_years": 5,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 6,
+  "fields": {
+    "name": "Priya Sharma",
+    "license_number": "DL-DL-2022-6606",
+    "phone": "9876501006",
+    "experience_years": 4,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 7,
+  "fields": {
+    "name": "Karthik N",
+    "license_number": "DL-KA-2016-7707",
+    "phone": "9876501007",
+    "experience_years": 11,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 8,
+  "fields": {
+    "name": "Joseph Mathew",
+    "license_number": "DL-GJ-2020-8808",
+    "phone": "9876501008",
+    "experience_years": 6,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.driver",
+  "pk": 9,
+  "fields": {
+    "name": "Mukesh",
+    "license_number": "DL-TN-2018-2269",
+    "phone": "7418529630",
+    "experience_years": 5,
+    "is_available": true
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 3,
+  "fields": {
+    "vehicle_number": "KA-01-AB-1234",
+    "make": "Toyota",
+    "model": "Innova Crysta",
+    "year": 2022,
+    "vehicle_type": "Car",
+    "owner_name": "Transport Office",
+    "driver": 7,
+    "status": "available",
+    "last_service_date": "2026-07-18",
+    "next_service_date": "2026-11-16",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "4750.00",
+    "created_at": "2026-09-27T06:05:06.717Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 4,
+  "fields": {
+    "vehicle_number": "TN-29-BJ-0328",
+    "make": "KTM",
+    "model": "Duke 390",
+    "year": 2023,
+    "vehicle_type": "Bike",
+    "owner_name": "Nishant S",
+    "driver": 9,
+    "status": "assigned",
+    "last_service_date": "2026-05-13",
+    "next_service_date": "2027-01-10",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "8875.00",
+    "created_at": "2026-09-27T06:05:06.721Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 5,
+  "fields": {
+    "vehicle_number": "MH-12-CD-7788",
+    "make": "Tata",
+    "model": "Ace Gold",
+    "year": 2020,
+    "vehicle_type": "Truck",
+    "owner_name": "Maintenance Team",
+    "driver": null,
+    "status": "maintenance",
+    "last_service_date": "2026-06-06",
+    "next_service_date": "2026-12-21",
+    "repair_notes": "Inspection required. Check brakes, engine oil, tires, and electrical system.",
+    "service_cost": "7375.00",
+    "created_at": "2026-09-27T06:05:06.723Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 6,
+  "fields": {
+    "vehicle_number": "KA-05-MN-2456",
+    "make": "Hyundai",
+    "model": "Creta",
+    "year": 2021,
+    "vehicle_type": "SUV",
+    "owner_name": "Admin Department",
+    "driver": 1,
+    "status": "available",
+    "last_service_date": "2026-07-06",
+    "next_service_date": "2026-11-26",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "5500.00",
+    "created_at": "2026-09-27T06:05:54.585Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 7,
+  "fields": {
+    "vehicle_number": "DL-08-XY-9101",
+    "make": "Maruti Suzuki",
+    "model": "Swift Dzire",
+    "year": 2019,
+    "vehicle_type": "Car",
+    "owner_name": "Finance Team",
+    "driver": 4,
+    "status": "assigned",
+    "last_service_date": "2026-08-05",
+    "next_service_date": "2026-11-01",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "3625.00",
+    "created_at": "2026-09-27T06:05:54.588Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 8,
+  "fields": {
+    "vehicle_number": "TN-10-CA-4455",
+    "make": "Honda",
+    "model": "Activa 6G",
+    "year": 2022,
+    "vehicle_type": "Scooter",
+    "owner_name": "Front Desk",
+    "driver": 8,
+    "status": "available",
+    "last_service_date": "2026-05-25",
+    "next_service_date": "2026-12-31",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "8125.00",
+    "created_at": "2026-09-27T06:05:54.591Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 9,
+  "fields": {
+    "vehicle_number": "KL-07-BR-6789",
+    "make": "Mahindra",
+    "model": "Bolero",
+    "year": 2020,
+    "vehicle_type": "SUV",
+    "owner_name": "Security Office",
+    "driver": null,
+    "status": "maintenance",
+    "last_service_date": "2026-06-24",
+    "next_service_date": "2026-12-06",
+    "repair_notes": "Inspection required. Check brakes, engine oil, tires, and electrical system.",
+    "service_cost": "6250.00",
+    "created_at": "2026-09-27T06:05:54.594Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 10,
+  "fields": {
+    "vehicle_number": "AP-09-QW-3344",
+    "make": "Ashok Leyland",
+    "model": "Dost",
+    "year": 2021,
+    "vehicle_type": "Truck",
+    "owner_name": "Logistics Team",
+    "driver": 1,
+    "status": "assigned",
+    "last_service_date": "2026-08-23",
+    "next_service_date": "2026-10-17",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "2500.00",
+    "created_at": "2026-09-27T06:05:54.596Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 11,
+  "fields": {
+    "vehicle_number": "GJ-01-RT-9087",
+    "make": "Tata",
+    "model": "Nexon EV",
+    "year": 2024,
+    "vehicle_type": "Electric Car",
+    "owner_name": "Director Office",
+    "driver": 5,
+    "status": "available",
+    "last_service_date": "2026-07-30",
+    "next_service_date": "2026-11-06",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "4000.00",
+    "created_at": "2026-09-27T06:05:54.599Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 12,
+  "fields": {
+    "vehicle_number": "RJ-14-LM-1122",
+    "make": "Royal Enfield",
+    "model": "Classic 350",
+    "year": 2022,
+    "vehicle_type": "Bike",
+    "owner_name": "Field Staff",
+    "driver": 7,
+    "status": "assigned",
+    "last_service_date": "2026-05-31",
+    "next_service_date": "2026-12-26",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "7750.00",
+    "created_at": "2026-09-27T06:05:54.601Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 13,
+  "fields": {
+    "vehicle_number": "WB-20-PR-7781",
+    "make": "Force",
+    "model": "Traveller",
+    "year": 2018,
+    "vehicle_type": "Van",
+    "owner_name": "Student Transport",
+    "driver": null,
+    "status": "maintenance",
+    "last_service_date": "2026-05-01",
+    "next_service_date": "2027-01-20",
+    "repair_notes": "Inspection required. Check brakes, engine oil, tires, and electrical system.",
+    "service_cost": "9625.00",
+    "created_at": "2026-09-27T06:05:54.603Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 14,
+  "fields": {
+    "vehicle_number": "KA-03-HH-5600",
+    "make": "Toyota",
+    "model": "Etios",
+    "year": 2017,
+    "vehicle_type": "Car",
+    "owner_name": "Guest Services",
+    "driver": null,
+    "status": "available",
+    "last_service_date": "2026-07-12",
+    "next_service_date": "2026-11-21",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "5125.00",
+    "created_at": "2026-09-27T06:05:54.606Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 15,
+  "fields": {
+    "vehicle_number": "TS-11-ZZ-4009",
+    "make": "Bajaj",
+    "model": "Pulsar 150",
+    "year": 2021,
+    "vehicle_type": "Bike",
+    "owner_name": "Operations Team",
+    "driver": 3,
+    "status": "assigned",
+    "last_service_date": "2026-05-07",
+    "next_service_date": "2027-01-15",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "9250.00",
+    "created_at": "2026-09-27T06:05:54.608Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 16,
+  "fields": {
+    "vehicle_number": "MH-04-KK-8733",
+    "make": "Eicher",
+    "model": "Pro 2049",
+    "year": 2019,
+    "vehicle_type": "Truck",
+    "owner_name": "Warehouse",
+    "driver": null,
+    "status": "maintenance",
+    "last_service_date": "2026-06-12",
+    "next_service_date": "2026-12-16",
+    "repair_notes": "Inspection required. Check brakes, engine oil, tires, and electrical system.",
+    "service_cost": "7000.00",
+    "created_at": "2026-09-27T06:05:54.611Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 17,
+  "fields": {
+    "vehicle_number": "TN-22-AA-1001",
+    "make": "Maruti Suzuki",
+    "model": "Ertiga",
+    "year": 2023,
+    "vehicle_type": "MPV",
+    "owner_name": "Staff Transport",
+    "driver": 1,
+    "status": "available",
+    "last_service_date": "2026-05-19",
+    "next_service_date": "2027-01-05",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "8500.00",
+    "created_at": "2026-09-27T06:05:54.614Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 18,
+  "fields": {
+    "vehicle_number": "KA-50-CD-2020",
+    "make": "Hyundai",
+    "model": "Verna",
+    "year": 2020,
+    "vehicle_type": "Car",
+    "owner_name": "HR Department",
+    "driver": null,
+    "status": "assigned",
+    "last_service_date": "2026-06-30",
+    "next_service_date": "2026-12-01",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "5875.00",
+    "created_at": "2026-09-27T06:05:54.616Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 19,
+  "fields": {
+    "vehicle_number": "DL-03-VV-8800",
+    "make": "Mahindra",
+    "model": "XUV700",
+    "year": 2024,
+    "vehicle_type": "SUV",
+    "owner_name": "Management",
+    "driver": 2,
+    "status": "available",
+    "last_service_date": "2026-08-11",
+    "next_service_date": "2026-10-27",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "3250.00",
+    "created_at": "2026-09-27T06:05:54.619Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 20,
+  "fields": {
+    "vehicle_number": "KL-11-NN-3456",
+    "make": "TVS",
+    "model": "Jupiter",
+    "year": 2021,
+    "vehicle_type": "Scooter",
+    "owner_name": "Office Assistant",
+    "driver": 4,
+    "status": "available",
+    "last_service_date": "2026-06-18",
+    "next_service_date": "2026-12-11",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "6625.00",
+    "created_at": "2026-09-27T06:05:54.621Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 21,
+  "fields": {
+    "vehicle_number": "GJ-18-MQ-9191",
+    "make": "Tata",
+    "model": "Winger",
+    "year": 2022,
+    "vehicle_type": "Van",
+    "owner_name": "Campus Shuttle",
+    "driver": 6,
+    "status": "assigned",
+    "last_service_date": "2026-07-24",
+    "next_service_date": "2026-11-11",
+    "repair_notes": "Routine service completed. Vehicle is ready for scheduled use.",
+    "service_cost": "4375.00",
+    "created_at": "2026-09-27T06:05:54.625Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 22,
+  "fields": {
+    "vehicle_number": "AP-31-DD-7362",
+    "make": "Honda",
+    "model": "City",
+    "year": 2018,
+    "vehicle_type": "Car",
+    "owner_name": "Accounts Team",
+    "driver": null,
+    "status": "maintenance",
+    "last_service_date": "2026-08-17",
+    "next_service_date": "2026-10-22",
+    "repair_notes": "Inspection required. Check brakes, engine oil, tires, and electrical system.",
+    "service_cost": "2875.00",
+    "created_at": "2026-09-27T06:05:54.628Z"
+  }
+},
+{
+  "model": "vehicles.vehicle",
+  "pk": 23,
+  "fields": {
+    "vehicle_number": "FG-85-AD-8526",
+    "make": "ktm",
+    "model": "duke 390",
+    "year": 2026,
+    "vehicle_type": "Bike",
+    "owner_name": "Logistics Team",
+    "driver": 9,
+    "status": "available",
+    "last_service_date": "2025-08-23",
+    "next_service_date": "2026-02-14",
+    "repair_notes": "",
+    "service_cost": null,
+    "created_at": "2026-09-27T06:50:51.660Z"
+  }
+}
+]
