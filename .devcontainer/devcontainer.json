@@ -1,0 +1,22 @@
+{
+  "name": "Vehicle Management System",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "Vehicle Management System",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && python .devcontainer/wait_for_mysql.py && python manage.py migrate && python .devcontainer/setup_demo.py",
+  "postStartCommand": "python .devcontainer/wait_for_mysql.py",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  }
+}
