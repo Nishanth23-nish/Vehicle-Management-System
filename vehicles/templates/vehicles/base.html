@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Vehicle Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'vehicles/styles.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{% url 'dashboard' %}">
+            <span class="brand-mark">V</span>
+            <span>Vehicle Management System</span>
+        </a>
+        <nav>
+            <a class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="{% if request.resolver_match.url_name == 'vehicle-list' %}active{% endif %}" href="{% url 'vehicle-list' %}">Vehicles</a>
+            <a class="{% if request.resolver_match.url_name == 'driver-list' %}active{% endif %}" href="{% url 'driver-list' %}">Drivers</a>
+            <a class="{% if request.resolver_match.url_name == 'maintenance' %}active{% endif %}" href="{% url 'maintenance' %}">Maintenance</a>
+            <a class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+            {% if can_manage_vehicles or not user.is_authenticated %}
+                <a class="button button-light {% if request.resolver_match.url_name == 'vehicle-create' %}active{% endif %}" href="{% url 'vehicle-create' %}">Add Vehicle</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <form class="nav-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="button button-light" type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a class="button button-light" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="page">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

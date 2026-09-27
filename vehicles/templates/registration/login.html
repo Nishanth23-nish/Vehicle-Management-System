@@ -1,0 +1,35 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Staff Login | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="auth-shell">
+    <div class="form-copy">
+        <p class="eyebrow">Secure access</p>
+        <h1>Staff login</h1>
+        <p>Login is required before adding, editing, or deleting vehicle records.</p>
+    </div>
+
+    <form class="form-card auth-card" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="form-error">Invalid username or password.</div>
+        {% endif %}
+
+        <label>
+            <span>Username</span>
+            {{ form.username }}
+        </label>
+        <label>
+            <span>Password</span>
+            {{ form.password }}
+        </label>
+
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+
+        <button class="button" type="submit">Login</button>
+    </form>
+</section>
+{% endblock %}

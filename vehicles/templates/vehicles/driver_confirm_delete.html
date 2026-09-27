@@ -1,0 +1,16 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Delete Driver{% endblock %}
+
+{% block content %}
+<section class="confirm-card">
+    <p class="eyebrow">Confirm delete</p>
+    <h1>Delete {{ object.name }}?</h1>
+    <p>This removes the driver record. Assigned vehicles will remain in the system without this driver.</p>
+    <form method="post" class="form-actions">
+        {% csrf_token %}
+        <a class="button button-secondary" href="{% url 'driver-list' %}">Cancel</a>
+        <button class="button button-danger" type="submit">Delete Driver</button>
+    </form>
+</section>
+{% endblock %}

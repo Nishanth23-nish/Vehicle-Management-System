@@ -1,0 +1,76 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Maintenance | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="content-hero">
+    <p class="eyebrow">Maintenance</p>
+    <h1>Service and maintenance tracking</h1>
+    <p>Review upcoming service dates, maintenance status, repair notes, and service costs.</p>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <span>Service Due Soon</span>
+        <strong>{{ due_soon_count }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>In Maintenance</span>
+        <strong>{{ maintenance_count }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>Total Service Cost</span>
+        <strong>Rs. {{ total_service_cost }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>Tracked Records</span>
+        <strong>{{ maintenance_vehicles|length }}</strong>
+    </article>
+</section>
+
+<section class="panel">
+    <div class="panel-header">
+        <h2>Maintenance Records</h2>
+        <span class="role-pill">Today: {{ today|date:"d M Y" }}</span>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Vehicle No.</th>
+                    <th>Vehicle</th>
+                    <th>Driver</th>
+                    <th>Status</th>
+                    <th>Last Service</th>
+                    <th>Next Service</th>
+                    <th>Service Cost</th>
+                    <th>Repair Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicle in maintenance_vehicles %}
+                    <tr>
+                        <td>
+                            <a class="table-link" href="{% url 'vehicle-detail' vehicle.pk %}">
+                                <strong>{{ vehicle.vehicle_number }}</strong>
+                            </a>
+                        </td>
+                        <td>{{ vehicle.make }} {{ vehicle.model }}</td>
+                        <td>{{ vehicle.driver.name|default:"Not assigned" }}</td>
+                        <td><span class="status status-{{ vehicle.status }}">{{ vehicle.get_status_display }}</span></td>
+                        <td>{{ vehicle.last_service_date|date:"d M Y"|default:"Not set" }}</td>
+                        <td>{{ vehicle.next_service_date|date:"d M Y"|default:"Not set" }}</td>
+                        <td>{% if vehicle.service_cost %}Rs. {{ vehicle.service_cost }}{% else %}Not set{% endif %}</td>
+                        <td class="notes-cell">{{ vehicle.repair_notes|default:"No notes added." }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8">No maintenance records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

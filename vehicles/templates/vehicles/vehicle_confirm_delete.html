@@ -1,0 +1,16 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Delete Vehicle{% endblock %}
+
+{% block content %}
+<section class="confirm-card">
+    <p class="eyebrow">Confirm delete</p>
+    <h1>Delete {{ object.vehicle_number }}?</h1>
+    <p>This removes {{ object.make }} {{ object.model }} from the vehicle records.</p>
+    <form method="post" class="form-actions">
+        {% csrf_token %}
+        <a class="button button-secondary" href="{% url 'vehicle-list' %}">Cancel</a>
+        <button class="button button-danger" type="submit">Delete Vehicle</button>
+    </form>
+</section>
+{% endblock %}

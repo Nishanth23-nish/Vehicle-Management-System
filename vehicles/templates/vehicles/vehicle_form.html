@@ -1,0 +1,33 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}{% if object %}Edit Vehicle{% else %}Add Vehicle{% endif %}{% endblock %}
+
+{% block content %}
+<section class="form-shell">
+    <div class="form-copy">
+        <p class="eyebrow">{% if object %}Update record{% else %}New record{% endif %}</p>
+        <h1>{% if object %}Edit vehicle details{% else %}Add a vehicle{% endif %}</h1>
+        <p>Keep registration, ownership, and status details organized in one place.</p>
+    </div>
+
+    <form class="form-card vehicle-form-grid" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+            <label class="{% if field.name == 'repair_notes' %}field-wide{% endif %}">
+                <span>{{ field.label }}</span>
+                {{ field }}
+                {% if field.errors %}
+                    <small class="field-error">{{ field.errors|striptags }}</small>
+                {% endif %}
+            </label>
+        {% endfor %}
+
+        <div class="form-actions">
+            <a class="button button-secondary" href="{% url 'vehicle-list' %}">Cancel</a>
+            <button class="button" type="submit">Save Vehicle</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

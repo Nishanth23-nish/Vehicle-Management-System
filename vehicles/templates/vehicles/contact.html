@@ -1,0 +1,35 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Contact | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="content-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Contact the transport office</h1>
+    <p>Use this page for sample contact information related to the Vehicle Management System.</p>
+</section>
+
+<section class="contact-layout">
+    <div class="info-card">
+        <h2>Office Details</h2>
+        <p><strong>Email:</strong> transport@example.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Address:</strong> Main Campus Transport Office</p>
+    </div>
+
+    <form class="form-card" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <label>
+                <span>{{ field.label }}</span>
+                {{ field }}
+                {% if field.errors %}
+                    <small class="field-error">{{ field.errors|striptags }}</small>
+                {% endif %}
+            </label>
+        {% endfor %}
+        <button class="button" type="submit">Send Message</button>
+    </form>
+</section>
+{% endblock %}

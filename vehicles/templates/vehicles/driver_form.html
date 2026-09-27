@@ -1,0 +1,36 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}{% if object %}Edit Driver{% else %}Add Driver{% endif %}{% endblock %}
+
+{% block content %}
+<section class="form-shell">
+    <div class="form-copy">
+        <p class="eyebrow">{% if object %}Update driver{% else %}New driver{% endif %}</p>
+        <h1>{% if object %}Edit driver details{% else %}Add a driver{% endif %}</h1>
+        <p>Manage driver contact details, license information, experience, and availability.</p>
+    </div>
+
+    <form class="form-card vehicle-form-grid" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+            <label class="{% if field.name == 'assigned_vehicles' %}field-wide{% endif %}">
+                <span>{{ field.label }}</span>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="help-text">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <small class="field-error">{{ field.errors|striptags }}</small>
+                {% endif %}
+            </label>
+        {% endfor %}
+
+        <div class="form-actions">
+            <a class="button button-secondary" href="{% url 'driver-list' %}">Cancel</a>
+            <button class="button" type="submit">Save Driver</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

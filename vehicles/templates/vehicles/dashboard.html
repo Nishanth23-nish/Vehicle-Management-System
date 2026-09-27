@@ -1,0 +1,101 @@
+{% extends 'vehicles/base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Vehicle Management System</p>
+        <h1>Monitor your fleet, drivers, and maintenance in one place.</h1>
+        <p class="hero-copy">View vehicle status, driver assignments, service schedules, and records directly from your MySQL database.</p>
+    </div>
+    {% if can_manage_vehicles %}
+        <a class="button" href="{% url 'vehicle-create' %}">Add Vehicle</a>
+    {% elif user.is_authenticated %}
+        <span class="button button-ghost">Read-only Access</span>
+    {% else %}
+        <a class="button" href="{% url 'login' %}">Staff Login</a>
+    {% endif %}
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <span>Total</span>
+        <strong>{{ total_count }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>Available</span>
+        <strong>{{ available_count }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>Assigned</span>
+        <strong>{{ assigned_count }}</strong>
+    </article>
+    <article class="stat-card">
+        <span>Maintenance</span>
+        <strong>{{ maintenance_count }}</strong>
+    </article>
+</section>
+
+<section class="dashboard-grid">
+    <article class="dashboard-card">
+        <div class="card-heading">
+            <h2>Status Chart</h2>
+            <span>{{ total_count }} total</span>
+        </div>
+        <div class="chart-list">
+            {% for item in status_chart %}
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span>{{ item.label }}</span>
+                        <strong>{{ item.count }}</strong>
+                    </div>
+                    <div class="bar-track">
+                        <span class="bar-fill bar-{{ item.class }}" style="width: {{ item.percent }}%"></span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="dashboard-card">
+        <div class="card-heading">
+            <h2>Vehicle Type Chart</h2>
+            <span>Top types</span>
+        </div>
+        <div class="chart-list">
+            {% for item in type_chart %}
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span>{{ item.label }}</span>
+                        <strong>{{ item.count }}</strong>
+                    </div>
+                    <div class="bar-track">
+                        <span class="bar-fill bar-type" style="width: {{ item.percent }}%"></span>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="muted-text">No vehicle types available yet.</p>
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="dashboard-card recent-card">
+        <div class="card-heading">
+            <h2>Recently Added Vehicles</h2>
+            <span>Latest 5 records</span>
+        </div>
+        <div class="recent-list">
+            {% for vehicle in recent_vehicles %}
+                <a class="recent-item" href="{% url 'vehicle-detail' vehicle.pk %}">
+                    <span>
+                        <strong>{{ vehicle.vehicle_number }}</strong>
+                        {{ vehicle.make }} {{ vehicle.model }}
+                    </span>
+                    <em>{{ vehicle.created_at|date:"d M Y" }}</em>
+                </a>
+            {% empty %}
+                <p class="muted-text">No recent vehicles yet.</p>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+{% endblock %}

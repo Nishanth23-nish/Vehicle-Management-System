@@ -1,0 +1,30 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Services | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="content-hero">
+    <p class="eyebrow">Services</p>
+    <h1>What this system can do</h1>
+    <p>Use these features to maintain clear and updated vehicle information.</p>
+</section>
+
+<section class="feature-list">
+    <div class="feature-row">
+        <strong>Vehicle Registration</strong>
+        <span>Add new vehicles with registration number, make, model, year, type, owner, and status.</span>
+    </div>
+    <div class="feature-row">
+        <strong>Vehicle Search</strong>
+        <span>Quickly find vehicles by number, make, model, or owner name.</span>
+    </div>
+    <div class="feature-row">
+        <strong>Status Tracking</strong>
+        <span>Mark each vehicle as Available, Assigned, or Maintenance.</span>
+    </div>
+    <div class="feature-row">
+        <strong>Record Updates</strong>
+        <span>Edit incorrect details and remove old vehicle records when needed.</span>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}{{ vehicle.vehicle_number }} | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="detail-hero">
+    <div>
+        <p class="eyebrow">Vehicle record</p>
+        <h1>{{ vehicle.make }} {{ vehicle.model }}</h1>
+        <p>{{ vehicle.vehicle_number }}</p>
+    </div>
+    <span class="status status-{{ vehicle.status }}">{{ vehicle.get_status_display }}</span>
+</section>
+
+<section class="detail-grid">
+    <article class="info-card">
+        <h2>Registration</h2>
+        <dl>
+            <dt>Vehicle Number</dt>
+            <dd>{{ vehicle.vehicle_number }}</dd>
+            <dt>Year</dt>
+            <dd>{{ vehicle.year }}</dd>
+            <dt>Type</dt>
+            <dd>{{ vehicle.vehicle_type }}</dd>
+            <dt>Owner</dt>
+            <dd>{{ vehicle.owner_name }}</dd>
+        </dl>
+    </article>
+    <article class="info-card">
+        <h2>Driver Assignment</h2>
+        <dl>
+            <dt>Driver</dt>
+            <dd>{{ vehicle.driver.name|default:"Not assigned" }}</dd>
+            <dt>License</dt>
+            <dd>{% if vehicle.driver %}{{ vehicle.driver.license_number }}{% else %}Not available{% endif %}</dd>
+            <dt>Phone</dt>
+            <dd>{% if vehicle.driver %}{{ vehicle.driver.phone }}{% else %}Not available{% endif %}</dd>
+            <dt>Status</dt>
+            <dd>{{ vehicle.get_status_display }}</dd>
+        </dl>
+    </article>
+    <article class="info-card">
+        <h2>Service Tracking</h2>
+        <dl>
+            <dt>Last Service</dt>
+            <dd>{{ vehicle.last_service_date|date:"d M Y"|default:"Not set" }}</dd>
+            <dt>Next Service</dt>
+            <dd>{{ vehicle.next_service_date|date:"d M Y"|default:"Not set" }}</dd>
+            <dt>Service Cost</dt>
+            <dd>{% if vehicle.service_cost %}Rs. {{ vehicle.service_cost }}{% else %}Not set{% endif %}</dd>
+        </dl>
+    </article>
+    <article class="info-card">
+        <h2>Repair Notes</h2>
+        <dl>
+            <dt>Notes</dt>
+            <dd>{{ vehicle.repair_notes|default:"No repair notes added." }}</dd>
+            <dt>Created</dt>
+            <dd>{{ vehicle.created_at|date:"d M Y" }}</dd>
+        </dl>
+    </article>
+</section>
+
+<div class="page-actions">
+    <a class="button button-secondary" href="{% url 'vehicle-list' %}">Back</a>
+    {% if can_manage_vehicles %}
+        <a class="button" href="{% url 'vehicle-update' vehicle.pk %}">Edit Vehicle</a>
+    {% endif %}
+    {% if can_delete_vehicles %}
+        <a class="button button-danger" href="{% url 'vehicle-delete' vehicle.pk %}">Delete</a>
+    {% endif %}
+</div>
+{% endblock %}

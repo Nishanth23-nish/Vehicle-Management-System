@@ -1,0 +1,93 @@
+{% extends 'vehicles/base.html' %}
+
+{% block title %}Vehicles | Vehicle Management System{% endblock %}
+
+{% block content %}
+<section class="content-hero">
+    <p class="eyebrow">Vehicle records</p>
+    <h1>Vehicles</h1>
+    <p>Search, filter, export, and manage vehicle records separately from the dashboard.</p>
+</section>
+
+<section class="panel" id="vehicles">
+    <div class="panel-header">
+        <h2>Vehicle Records</h2>
+        <div class="panel-tools">
+            {% if can_manage_vehicles %}
+                <div class="export-actions" aria-label="Export vehicle data">
+                    <a class="button button-ghost" href="{% url 'vehicle-export-csv' %}">CSV</a>
+                    <a class="button button-ghost" href="{% url 'vehicle-export-excel' %}">Excel</a>
+                    <a class="button button-ghost" href="{% url 'vehicle-export-pdf' %}">PDF</a>
+                    <a class="button button-secondary" href="{% url 'vehicle-create' %}">Add Vehicle</a>
+                </div>
+            {% endif %}
+            <form class="search" method="get">
+                <input type="search" name="q" value="{{ query }}" placeholder="Search vehicles">
+                <select name="status" aria-label="Filter by status">
+                    <option value="">All status</option>
+                    {% for value, label in status_choices %}
+                        <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <button class="button button-secondary" type="submit">Search</button>
+                {% if query or selected_status %}
+                    <a class="button button-ghost" href="{% url 'vehicle-list' %}">Clear</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    {% if vehicles %}
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle No.</th>
+                        <th>Vehicle</th>
+                        <th>Type</th>
+                        <th>Year</th>
+                        <th>Driver</th>
+                        <th>Next Service</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vehicle in vehicles %}
+                        <tr>
+                            <td><a class="table-link" href="{% url 'vehicle-detail' vehicle.pk %}"><strong>{{ vehicle.vehicle_number }}</strong></a></td>
+                            <td>{{ vehicle.make }} {{ vehicle.model }}</td>
+                            <td>{{ vehicle.vehicle_type }}</td>
+                            <td>{{ vehicle.year }}</td>
+                            <td>{{ vehicle.driver.name|default:"Not assigned" }}</td>
+                            <td>{{ vehicle.next_service_date|date:"d M Y"|default:"Not set" }}</td>
+                            <td><span class="status status-{{ vehicle.status }}">{{ vehicle.get_status_display }}</span></td>
+                            <td class="actions">
+                                <a href="{% url 'vehicle-detail' vehicle.pk %}">View</a>
+                                {% if can_manage_vehicles %}
+                                    <a href="{% url 'vehicle-update' vehicle.pk %}">Edit</a>
+                                {% endif %}
+                                {% if can_delete_vehicles %}
+                                    <a class="danger" href="{% url 'vehicle-delete' vehicle.pk %}">Delete</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h3>No vehicles found</h3>
+            <p>Add your first vehicle or adjust the search term.</p>
+            {% if can_manage_vehicles %}
+                <a class="button" href="{% url 'vehicle-create' %}">Add Vehicle</a>
+            {% elif user.is_authenticated %}
+                <span class="button button-ghost">Read-only Access</span>
+            {% else %}
+                <a class="button" href="{% url 'login' %}">Staff Login</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
